@@ -9,18 +9,18 @@ public class HelloWorldPrimtiveDataTypes {
 		
 		
 		/*Primitive DataTypes - 8 Types of Data Types
-		 * char
-		 * boolean
-		 * int
-		 * short
-		 * double
-		 * float
-		 * long
-		 * byte
+		 * char 		-		16 bits(2 bytes)
+		 * boolean		-		08 bits	(1 byte)
+		 * int			-		32 bits (4 bytes)
+		 * short		-		16 bits (2 bytes)
+		 * double		-		64 bits (8 bytes)			
+		 * float		-		32 bits (4 bytes)
+		 * long			-		64 bits (8 bytes)
+		 * byte			-		08 bits	(1 byte)
 		 * */
 		
 		
-		//bte has a width of 8 bit
+		//byte has a width of 8 bit
 		byte mybytevalue= -127;//min byte value
 		byte newbytevalue =(byte) (mybytevalue/2);
 				
