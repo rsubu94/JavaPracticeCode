@@ -4,10 +4,10 @@ public class SecondsAndMinutesChallenge {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String hours=secAndMin(65,45);
+		String hours=secAndMin(65,9);
 		System.out.println("Hours "+hours);
 		String next = secAndMin(58955);
-		System.out.println(next);
+		System.out.println("Complete Hours "+next);
 
 	}
 	
@@ -19,9 +19,9 @@ public class SecondsAndMinutesChallenge {
 		
 		int hours = minutes /60;
 		
-		System.out.println(hours);
+		System.out.println("Hours "+hours);
 		int remaining= minutes % 60;
-		System.out.println(remaining);
+		System.out.println("Remaining Minutes "+remaining);
 		String totalHours=hours+"h "+remaining+ "m "+seconds+"seconds";
 		return totalHours;
 	}
@@ -33,10 +33,10 @@ public class SecondsAndMinutesChallenge {
 		}
 		
 		int minutes = seconds /60;
-		System.out.println(minutes);
+		System.out.println("Minutes "+minutes);
 
 		int reseconds= seconds % 60;
-		System.out.println(reseconds);
+		System.out.println("Seconds "+reseconds);
 
 		
 		//String totalHours=hours+"h "+remaining+ "m "+seconds+"seconds";
