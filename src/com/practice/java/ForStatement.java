@@ -6,23 +6,20 @@ public class ForStatement {
 
 	public static void main(String[] args) {
 		int count=0;
-//		for (int i=10;i<150;i++)
-//		{
-//			if(isPrime(i)) {
-//				count++;
-//				System.out.println("Prime Number is "+i+" and the count is "+count);
-//				if(count==20)
-//				{
-//					System.out.println("Count Exceeds "+ count +" so existing the loop");
-//					break;
-//				}
-//			}
-		
-		for (int n =100 ; n<333130;n+=10)
+		for (int i=10;i<150;i++)
 		{
-			System.out.println("Number "+n);
-			
+			if(isPrime(i)) {
+				count++;
+				System.out.println("Prime Number is "+i+" and the count is "+count);
+				if(count==20)
+				{
+					System.out.println("Count Exceeds "+ count +" so existing the loop");
+					break;
+				}
+			}
 		}
+		
+
 
 //StringBuilder sbuf = new StringBuilder();
 //Formatter fmt = new Formatter(sbuf);
