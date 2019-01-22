@@ -16,6 +16,7 @@ public class ArrChallenge {
 	public static int[] getIntegers(int no)
 	{
 		int values[] = new int[no];
+		System.out.println("Enter the number \n");
 		for (int i=0;i<values.length;i++) {
 			values[i]=scan.nextInt();
 		}
@@ -53,7 +54,7 @@ public class ArrChallenge {
 				System.out.println("NewArr j : "+newArr[j]);
 				System.out.println("NewArr j+1 : "+newArr[j+1]);
 				System.out.println("loogp : "+(newArr[j] < newArr[j+1]));
-				if(newArr[j] < newArr[j+1]) {
+				if(newArr[j] >newArr[j+1]) {
 					temp = newArr[j];
 					System.out.println("Temp 1 : "+temp);
 					newArr[j] = newArr[j+1];
