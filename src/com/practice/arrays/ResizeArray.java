@@ -16,6 +16,7 @@ public class ResizeArray {
 	//	arr[11]=10;
 		System.out.println(Arrays.toString(newArr));
 		System.out.println(Arrays.toString(arr));
+		
 
 	}
 
