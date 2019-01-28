@@ -1,6 +1,7 @@
 package com.practice.arrays;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class ReverseArray {
@@ -11,8 +12,9 @@ public class ReverseArray {
 		System.out.println("Enter the Count : \r");
 		int count = scan.nextInt();
 		int[] returnArr = readInteger(count);
-		System.out.println("Given Array : "+Arrays.toString(returnArr));
+		System.out.println("Given Array : " + Arrays.toString(returnArr));
 		reverse(returnArr);
+		reverseInbulit(returnArr);
 	}
 
 	private static int[] readInteger(int count) {
@@ -36,6 +38,13 @@ public class ReverseArray {
 			arr[maxindexx - i] = temp;
 		}
 		System.out.println("Reversed Array : " + Arrays.toString(arr));
+	}
+
+	// reverse array using in-built method
+
+	private static void reverseInbulit(int[] array) {
+		Collections.reverse(Arrays.asList(array));
+		System.out.println("Reversed array inbuilt5 " + Arrays.toString(array));
 	}
 
 }
