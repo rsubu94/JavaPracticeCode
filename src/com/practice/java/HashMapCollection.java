@@ -84,6 +84,8 @@ public class HashMapCollection {
 		Set<Integer> s = map.keySet();
 		s.forEach(System.out::println);
 		
+		
+		
 		//To iterate only values
 		Collection<String> val =  map.values();
 		val.forEach(System.out::println);
