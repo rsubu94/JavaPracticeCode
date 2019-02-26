@@ -10,6 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.Spliterator;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
@@ -51,7 +52,7 @@ public class StreamExamples {
 
 		Stream<String> names4 = Stream.of("Pankaj", "Amit", "David", "Lisa", "Daniel");
 		Optional<String> firstNameWithD = names4.filter(i -> i.startsWith("D")).findFirst();
-		if (firstNameWithD.isPresent()) {
+		if (!firstNameWithD.isPresent()) {
 			System.out.println("First Name starting with D=" + firstNameWithD.get()); // David
 		}
 		Stream.iterate(1, n -> n + 1).filter(StreamExamples::isOdd).limit(5).forEach(System.out::println);
@@ -65,6 +66,16 @@ public class StreamExamples {
 		Optional<String> veryLargeString 
 		  = listOfStrings.stream().filter(str -> str.length() > 20).findFirst();
 		veryLargeString.ifPresent(System.out::println);
+		
+		Spliterator<Integer> iSpliterator = list.spliterator();
+		System.err.println("__________________________");
+		//System.err.println(iSpliterator.getExactSizeIfKnown());
+//iSpliterator.forEachRemaining(System.out::println);
+	iSpliterator.trySplit().forEachRemaining(System.out::println);
+	System.err.println("__________________________");
+	iSpliterator.forEachRemaining(System.out::println);
+
+
 
 //		try {
 //			Files.newDirectoryStream(Paths.get(System.getProperty("user.dir"))).forEach(System.out::println);

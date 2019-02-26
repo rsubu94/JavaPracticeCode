@@ -47,8 +47,15 @@ public class MainComparatorComparable {
 		SecureRandom secureRandom = new SecureRandom();
 		System.out.println(secureRandom.nextInt(1235));
 		
+		List<Integer> integer = Arrays.asList(1,2,3,4,5);
+		
 		
 		Queue<Integer> queue = new PriorityQueue<>(7);
+		
+		String s1 = "String";
+		s1 = s1 + "Concat";
+		System.out.println(s1);
+				
 
 //		System.out.println("Before Sorting " + list);
 //		
