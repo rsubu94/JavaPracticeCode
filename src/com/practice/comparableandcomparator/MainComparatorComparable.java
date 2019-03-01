@@ -13,7 +13,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import javafx.scene.Scene;
+
 
 public class MainComparatorComparable {
 	public static void main(String[] args) {
@@ -48,7 +48,12 @@ public class MainComparatorComparable {
 		System.out.println(secureRandom.nextInt(1235));
 		
 		List<Integer> integer = Arrays.asList(1,2,3,4,5);
-		
+	
+		Integer integer = 12;
+		int h  = integer.intValue();
+		int j =10;
+		Integer integer2 = Integer.valueOf(j);
+
 		
 		Queue<Integer> queue = new PriorityQueue<>(7);
 		
