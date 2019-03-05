@@ -22,6 +22,7 @@ public class InterfaceChallengeMain {
 		saveObject(monster);
 		System.out.println(monster);
 		ISaveable.nooone();
+		ISaveable.test();
 System.out.println(ISaveable.value);
 		monster.testt();
 

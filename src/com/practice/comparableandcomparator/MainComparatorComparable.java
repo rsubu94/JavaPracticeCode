@@ -49,8 +49,8 @@ public class MainComparatorComparable {
 		
 		List<Integer> integer = Arrays.asList(1,2,3,4,5);
 	
-		Integer integer = 12;
-		int h  = integer.intValue();
+		Integer integer1 = 12;
+		int h  = integer1.intValue();
 		int j =10;
 		Integer integer2 = Integer.valueOf(j);
 
