@@ -12,12 +12,13 @@ public class PC extends Thread {
 		int value = 0;
 		while (true) {
 			synchronized (this) {
-				if (linkedList.size() == 0)
-					System.out.println("Produced Value " + value);
+				if (linkedList.size() == capacity)
+					wait();
+
+				System.out.println("Produced Value " + value);
 				linkedList.add(value++);
 				notify();
 
-				wait();
 				Thread.sleep(1000);
 			}
 		}
@@ -29,7 +30,6 @@ public class PC extends Thread {
 				if (linkedList.size() == 0)
 					wait();
 				System.out.println("Consumed Value " + linkedList.removeFirst());
-				System.out.println("Currency " + Currency.getInstance(Locale.US).getSymbol());
 				notify();
 				Thread.sleep(1000);
 			}

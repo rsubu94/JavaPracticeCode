@@ -3,7 +3,6 @@ package com.practice.arrays;
 import java.util.Arrays;
 import java.util.Scanner;
 
-import javafx.beans.property.ReadOnlyIntegerProperty;
 
 public class MinElement {
 

@@ -14,24 +14,24 @@ import sun.net.www.content.text.plain;
 
 public class ConcurrentMap {
 	public static void main(String[] args) {
-		Map<Integer, String> map = new ConcurrentHashMap<>();
-		map.put(1, "subu");
-		map.put(2, "jaqen");
-		map.put(3, "xaro");
-		map.put(4, "jonsnow");
-		map.put(5, "ygrite");
-
-		Iterator<Integer> iterator = map.keySet().iterator();
-		while (iterator.hasNext()) {
-			Integer integer = iterator.next();
-			if (integer == 3) {
-				map.put(integer + 1, "arya");
-			}
-		}
-		System.out.println("Concurrent HashMap " + map);
+//		Map<Integer, String> map = new ConcurrentHashMap<>();
+//		map.put(1, "subu");
+//		map.put(2, "jaqen");
+//		map.put(3, "xaro");
+//		map.put(4, "jonsnow");
+//		map.put(5, "ygrite");
+//
+//		Iterator<Integer> iterator = map.keySet().iterator();
+//		while (iterator.hasNext()) {
+//			Integer integer = iterator.next();
+//			if (integer == 3) {
+//				map.put(integer + 1, "arya");
+//			}
+//		}
+//		System.out.println("Concurrent HashMap " + map);
 
 		// HashMap
-		map = new HashMap<Integer, String>();
+		Map<Integer, String> map = new HashMap<Integer, String>();
 		map.put(1, "1");
 		map.put(2, "1");
 		map.put(3, "1");
@@ -44,7 +44,7 @@ public class ConcurrentMap {
 		while (it1.hasNext()) {
 			Integer key = it1.next();
 			if (key == 3) {
-				map.put(key, "new3");
+				map.put(7, "new3");
 				break;
 			}
 
