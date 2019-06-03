@@ -4,7 +4,7 @@ import java.util.Currency;
 import java.util.LinkedList;
 import java.util.Locale;
 
-public class PC extends Thread {
+public class PC {
 	LinkedList<Integer> linkedList = new LinkedList<>();
 	int capacity = 4;
 

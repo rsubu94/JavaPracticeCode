@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Merchant Page</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<!-- Optional theme -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Ubuntu"
+	rel="stylesheet">
+<link rel="stylesheet" href="css/forms.css">
+
+
+</head>
+<div style="padding: 5px">
+	<img class="img-logo" alt="camspaylogo" src="images/camspay-new.png">
+	<img style="height: 40px; width: 50px; float: right;" alt="cartlogo"
+		src="images/cart-icon-16.png">
+	<hr>
+</div>
+
+<body>
+
+	<div class="container">
+
+		<form>
+
+			<div class="new">
+				<h4 style="padding: 5px 10px 20px 50px">Checkout Page</h4>
+				<div class="form-row">
+
+					<div class="form-group col-md-6">
+						<label for="User ID">User ID</label> <input type="text"
+							class="form-control txtbox" id="user_id"
+							placeholder="Enter User ID">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="password">Password</label> <input type="password"
+							class="form-control txtbox" id="password"
+							placeholder="Enter Password">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="amount">Amount</label> <input type="text"
+							class="form-control txtbox " id="amount"
+							placeholder="Enter the Amount">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label for="description">Description</label>
+						<textarea class="form-control" id="remarks" rows="3"
+							cols="100" placeholder="Enter the description"
+							style="height: 100px; width: 200px;"></textarea>
+					</div>
+				</div>
+				<button type="submit" class="btn-primary" id="pay">Pay</button>
+				
+				<!-- <a href="#" id="test">call</a> -->
+		</form>
+	</div>
+	</div>
+
+</body>
+	 <!-- 	<footer align="left"  class="form0"><hr><strong>** This is sample checkout page **</strong></footer> -->
+<script src="scripts/jquery-3.2.1.min.js"></script>
+<script src="scripts/pay.js"></script>
+
+</html>

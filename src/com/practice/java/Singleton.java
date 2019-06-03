@@ -2,45 +2,40 @@ package com.practice.java;
 
 class Singleton {
 
-	
-	public static int count;
+	public static int count = 1;
+	public static Singleton singleton;
 
-	public Singleton() {
-		//System.out.println("Count Constructor " + count);
-	}
-	{
+	private Singleton() {
 		count++;
 	}
 
-	public void getSingleton() {
-//		singleton = new Singleton();
-		
-//		singleton.getSingleton();
-		//Singleton singleton1 = new Singleton();
-
-		Singleton singleton2 = new Singleton();
-
-		Singleton singleton3 = new Singleton();
-
-		Singleton singleton4 = new Singleton();
-
+	public static Singleton getSingleton() {
 		System.out.println("Count  " + count);
 		if (count > 4) {
 			throw new CustException("More than 4 objects requested");
 		}
+		singleton = new Singleton();
+		System.out.println("Created Object "+singleton);
+		return singleton;
 
 	}
 }
 
 class MainSingleton {
 	public static void main(String[] args) {
-//		try {
-		Singleton singleton = new Singleton();
-			singleton.getSingleton();
+		try {
+			Singleton singleton1 = Singleton.getSingleton();
+			Singleton singleton2 = Singleton.getSingleton();
+			Singleton singleton3 = Singleton.getSingleton();
+			Singleton singleton4 = Singleton.getSingleton();
+			Singleton singleton5 = Singleton.getSingleton();
+			Singleton singleton6 = Singleton.getSingleton();
+			Singleton singleton7 = Singleton.getSingleton();
+		} catch (CustException e) {
+			System.err.println("Exception : "+e.getErrorMessageString());
+		}
 
-//		} catch (CustException e) {
-//			System.out.println(e.getErrorMessageString());
-//		}
+		
 
 	}
 }
