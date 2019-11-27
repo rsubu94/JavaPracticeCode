@@ -1,0 +1,344 @@
+CREATE TABLE Insert_Procedure ( 
+  USER_ID       NUMBER (5)    NOT NULL, 
+  USERNAME      VARCHAR2 (20)  NOT NULL, 
+  CREATED_BY    VARCHAR2 (20)  NOT NULL, 
+  CREATED_DATE  DATE          NOT NULL, 
+  PRIMARY KEY ( USER_ID ) 
+ )
+
+
+CREATE OR REPLACE PROCEDURE Insert_Procedure_example(
+     p_userid IN Insert_Procedure.USER_ID%TYPE,
+     p_username IN Insert_Procedure.USERNAME%TYPE,
+     p_createdby IN Insert_Procedure.CREATED_BY%TYPE,
+     p_date IN Insert_Procedure.CREATED_DATE%TYPE)
+IS
+BEGIN
+
+  INSERT INTO Insert_Procedure (USER_ID, USERNAME, CREATED_BY, CREATED_DATE) 
+  VALUES (p_userid, p_username,p_createdby, p_date);
+
+  COMMIT;
+
+END;
+
+select * from Insert_Procedure 
+
+-----------------------------------------------INSERT
+create or replace procedure Update_Procedure_example(
+p_userid in Insert_Procedure.User_Id%type,
+ p_username IN Insert_Procedure.USERNAME%TYPE,
+  p_createdby IN Insert_Procedure.CREATED_BY%TYPE,
+    p_date IN Insert_Procedure.CREATED_DATE%TYPE)
+    is 
+    begin
+      update Insert_Procedure e set e.created_by=p_createdby where e.username=p_username;
+commit;
+end;
+-----------------------------------DELETE
+create or replace procedure Delete_Procedure_example(
+p_userid in Insert_Procedure.User_Id%type,
+ p_username IN Insert_Procedure.USERNAME%TYPE,
+  p_createdby IN Insert_Procedure.CREATED_BY%TYPE,
+    p_date IN Insert_Procedure.CREATED_DATE%TYPE)
+    is 
+    begin
+      delete from  Insert_Procedure where created_by=p_createdby;
+commit;
+end;
+-------------------------Select 
+  
+ create or replace procedure Select_Procedure_example(
+p_userid in Insert_Procedure.User_Id%type,
+ p_username out Insert_Procedure.USERNAME%TYPE,
+  p_createdby out Insert_Procedure.CREATED_BY%TYPE,
+    p_date out Insert_Procedure.CREATED_DATE%TYPE)
+    is 
+    begin
+
+ SELECT   USERNAME,CREATED_BY,CREATED_DATE
+  INTO  p_username,p_createdby,p_date
+  from  Insert_Procedure WHERE USER_ID = p_userid;
+commit;
+
+   DBMS_OUTPUT.PUT_LINE('username :  ' || p_username);
+   DBMS_OUTPUT.PUT_LINE('createdby :  ' || p_createdby);
+   DBMS_OUTPUT.PUT_LINE('createddate :  ' || p_date);
+  end;
+  ----------------- Select with cursor
+  
+  CREATE OR REPLACE PROCEDURE Cursorselect(
+ p_userid in Insert_Procedure.User_Id%type,
+ p_username out Insert_Procedure.USERNAME%TYPE,
+  p_createdby  out Insert_Procedure.CREATED_BY%TYPE,
+  p_date out Insert_Procedure.CREATED_DATE%TYPE)
+   AS
+    CURSOR c1 IS
+    SELECT USERNAME,CREATED_BY
+    FROM Insert_Procedure
+    WHERE User_Id=p_userid;
+BEGIN
+  open c1;
+    LOOP
+        FETCH c1 INTO p_username, p_createdby;
+        EXIT WHEN c1%NOTFOUND;
+           DBMS_OUTPUT.PUT_LINE('username :  ' || p_username);
+                      DBMS_OUTPUT.PUT_LINE('createdby :  ' || p_createdby);
+    end loop;
+  close c1;
+end;
+
+CREATE OR REPLACE PROCEDURE findMinNumber(x in number,y in number,z out number)
+is 
+begin
+if x<y then
+z:=x;
+else
+z:=y;
+end if;
+end;
+------------------------------
+CREATE OR REPLACE PROCEDURE findMaxNumkber(x in number,y in number,z out number)
+is 
+begin
+if x<y then
+z:=y;
+else
+z:=x;
+end if;
+end;
+------------------------------------------
+CREATE OR REPLACE PROCEDURE findMultiply(x in out number)
+is
+BEGIN 
+  x := x * x; 
+END;
+=======================Fuction  Example======================
+create or replace function findMaxFunction(x IN number, y IN number)  
+RETURN number 
+IS 
+    z number; 
+BEGIN 
+   IF x > y THEN 
+      z:= x; 
+   ELSE 
+      Z:= y; 
+   END IF;  
+   RETURN z; 
+END; 
+-------------------------------
+create or replace function findMinFunction(x IN number, y IN number)
+RETURN number
+IS
+    z number;
+BEGIN
+   IF x > y THEN
+      z:= y;
+   ELSE
+      Z:= x;
+   END IF;
+   RETURN z;
+END;
+=======================================================================
+CREATE OR REPLACE FUNCTION Factorial(p_MyNum INTEGER)
+   RETURN NUMBER AS
+    BEGIN -- Start of Factorial Function
+         IF p_MyNum = 1 THEN -- Checking for last value to process of n-1
+              RETURN 1;
+         ELSE
+              RETURN(p_MyNum * Factorial(p_MyNum-1)); -- Recursive
+         END IF;
+    END;
+    ================for loop
+    
+    DECLARE 
+   a number(2); 
+BEGIN 
+   FOR a in 10 .. 20 LOOP 
+      dbms_output.put_line('value of a: ' || a); 
+  END LOOP; 
+END; 
+===============Array
+DECLARE 
+   type namesarray IS VARRAY(5) OF VARCHAR2(10); 
+   type grades IS VARRAY(5) OF INTEGER; 
+   names namesarray; 
+   marks grades; 
+   total integer; 
+BEGIN 
+   names := namesarray('Kavita', 'Pritam', 'Ayan', 'Rishav', 'Aziz'); 
+   marks:= grades(98, 97, 78, 87, 92); 
+   total := names.count; 
+   dbms_output.put_line('Total '|| total || ' Students'); 
+   FOR i in 1 .. total LOOP 
+      dbms_output.put_line('Student: ' || names(i) || ' 
+      Marks: ' || marks(i)); 
+   END LOOP; 
+END;
+============String=================
+DECLARE 
+   name varchar2(20); 
+   company varchar2(30); 
+   introduction clob; 
+   choice char(1); 
+BEGIN 
+   name := 'John Smith'; 
+   company := 'Infotech'; 
+   introduction := ' Hello! I''m John Smith from Infotech.'; 
+   choice := 'y'; 
+   IF choice = 'y' THEN 
+      dbms_output.put_line(name); 
+      dbms_output.put_line(company); 
+      dbms_output.put_line(introduction); 
+   END IF; END; 
+==============if loop===============
+DECLARE 
+   a number(3) := 100; 
+BEGIN 
+   IF ( a = 10 ) THEN 
+      dbms_output.put_line('Value of a is 10' ); 
+   ELSIF ( a = 20 ) THEN 
+      dbms_output.put_line('Value of a is 20' ); 
+   ELSIF ( a = 30 ) THEN 
+      dbms_output.put_line('Value of a is 30' ); 
+   ELSE 
+       dbms_output.put_line('None of the values is matching'); 
+   END IF; 
+   dbms_output.put_line('Exact value of a is: '|| a );  
+END; 
+------------------------jdbc--
+=====JDBC WITHY INSERT
+import java.sql.*;  
+class InsertPrepared{  
+public static void main(String args[]){  
+try{  
+Class.forName("oracle.jdbc.driver.OracleDriver");  
+  
+Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");  
+  
+PreparedStatement stmt=con.prepareStatement("insert into Emp values(?,?)");  
+stmt.setInt(1,101);//1 specifies the first parameter in the query  
+stmt.setString(2,"Ratan");  
+  
+int i=stmt.executeUpdate();  
+System.out.println(i+" records inserted");  
+  
+con.close();  
+  
+}catch(Exception e){ System.out.println(e);}  
+  
+}  
+}  
+======================JDBC WITH SELECT QUERY
+import java.sql.*;  
+class OracleCon{  
+public static void main(String args[]){  
+try{  
+//step1 load the driver class  
+Class.forName("oracle.jdbc.driver.OracleDriver");  
+  
+//step2 create  the connection object  
+Connection con=DriverManager.getConnection(  
+"jdbc:oracle:thin:@localhost:1521:xe","system","oracle");        
+// con = DriverManager.getConnection("jdbc:oracle:thin:@" + DbIp.trim() + ":1521:orcl", "" + DbUserName.trim() + "", "" + DbPassword.trim() + "");
+
+  
+//step3 create the statement object  
+Statement stmt=con.createStatement();  
+  
+//step4 execute query  
+ResultSet rs=stmt.executeQuery("select * from emp");  
+while(rs.next())  
+System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3));  
+  
+//step5 close the connection object  
+con.close();  
+  
+}catch(Exception e){ System.out.println(e);}  
+  }  }  
+=========JDBC UPDATE
+
+package com.java2novice.jdbc;
+ 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+ 
+public class MyQueryUpdate {
+ 
+    public static void main(String[] args) {
+         
+        Connection con = null;
+        Statement stmt = null;
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con = DriverManager.getConnection("jdbc:oracle:thin:@<hostname>:<port num>:<DB name>"
+                        ,"user","password");
+            stmt = con.createStatement();
+            String query = "update table emp set salary=2000 where empid=200";
+            //count will give you how many records got updated
+            int count = stmt.executeUpdate(query);
+            System.out.println("Updated queries: "+count);
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally{
+            try{
+                if(stmt != null) stmt.close();
+                if(con != null) con.close();
+            } catch(Exception ex){}
+        }
+    }
+}
+
+===============jdbc with delete==
+   public class MyQueryUpdate {
+ 
+    public static void main(String[] args) {
+         
+        Connection con = null;
+        Statement stmt = null;
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            con = DriverManager.getConnection("jdbc:oracle:thin:@<hostname>:<port num>:<DB name>"
+                        ,"user","password");
+            stmt = con.createStatement();
+          
+            //count will give you how many records got updated
+           
+      String sql = "DELETE FROM Registration " +  "WHERE id = 101";
+            int count =  stmt.executeUpdate(sql);            
+      System.out.println("Updated queries: "+count);
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } finally{
+            try{
+                if(stmt != null) stmt.close();
+                if(con != null) con.close();
+            } catch(Exception ex){}
+        }
+    }
+}   
+      
+     ===jdbc create 
+     
+     
+  private static final String CREATE_TABLE_SQL="CREATE TABLE boraji.users ("
+                    + "UID INT NOT NULL,"
+                    + "NAME VARCHAR(45) NOT NULL,"
+                    + "DOB DATE NOT NULL,"
+                    + "EMAIL VARCHAR(45) NOT NULL,"
+                    + "PRIMARY KEY (UID))";
+        
+          stmt.executeUpdate(CREATE_TABLE_SQL);
+
+      System.out.println("Table created");
+----------------------------------------------

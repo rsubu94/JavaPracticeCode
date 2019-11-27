@@ -2,6 +2,8 @@ package com.practice.comparableandcomparator;
 
 import java.util.Comparator;
 
+import lombok.Data;
+@Data
 public class Company implements Comparable<Company> {
 
 	private int companyId;
